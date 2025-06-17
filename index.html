@@ -14,21 +14,41 @@
     header {
       background-color: #111;
       color: #fff;
-      padding: 2rem;
+      padding: 1rem;
       text-align: center;
     }
     header h1 {
       margin: 0;
-      font-size: 2.5rem;
+      font-size: 2rem;
     }
     header p {
-      margin: 0.5rem 0 0;
+      margin: 0.3rem 0 0;
       color: #e10600;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #e10600;
+    }
+    nav button {
+      background: none;
+      border: none;
+      color: white;
+      padding: 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    nav button:hover, nav button.active {
+      background-color: #b00000;
     }
     section {
       padding: 2rem;
       max-width: 900px;
       margin: auto;
+      display: none;
+    }
+    section.active {
+      display: block;
     }
     h2 {
       color: #e10600;
@@ -54,6 +74,17 @@
       text-decoration: underline;
     }
   </style>
+  <script>
+    function showTab(tabId, el) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.querySelector(`#${tabId}`).classList.add('active');
+      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+      el.classList.add('active');
+    }
+    window.onload = () => {
+      document.querySelectorAll('nav button')[0].click();
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -61,12 +92,22 @@
     <p>Robotics Engineer | Tech Tinkerer | Code Crafter</p>
   </header>
 
-  <section>
+  <nav>
+    <button onclick="showTab('home', this)">Home</button>
+    <button onclick="showTab('experience', this)">Experience</button>
+    <button onclick="showTab('projects', this)">Projects</button>
+    <button onclick="showTab('publications', this)">Publications</button>
+    <button onclick="showTab('skills', this)">Skills</button>
+    <button onclick="showTab('achievements', this)">Achievements</button>
+    <button onclick="showTab('contact', this)">Contact</button>
+  </nav>
+
+  <section id="home">
     <h2>Summary</h2>
     <p>Engineer by training, builder by instinct. Passionate about robotics, embedded systems, and machine intelligence. Adept in C/C++, Python, and ROS with a love for turning ideas into hardware-backed prototypes.</p>
   </section>
 
-  <section>
+  <section id="experience">
     <h2>Experience</h2>
     <ul>
       <li>Flo Mobility – Sensor fusion and real-time object detection for GPS-denied navigation.</li>
@@ -76,7 +117,7 @@
     </ul>
   </section>
 
-  <section>
+  <section id="projects">
     <h2>Projects & Patents</h2>
     <ul>
       <li>Dental-Insight Glove – Vision-based learning tool for dental surgery (Patent pending).</li>
@@ -85,7 +126,7 @@
     </ul>
   </section>
 
-  <section>
+  <section id="publications">
     <h2>Publications</h2>
     <ul>
       <li>Robotic Welding Pedestal – <a href="https://doi.org/10.1088/1742-6596/2601/1/012008">Journal of Physics: Conf. Series</a></li>
@@ -93,7 +134,7 @@
     </ul>
   </section>
 
-  <section>
+  <section id="skills">
     <h2>Skills</h2>
     <ul>
       <li><strong>Languages:</strong> C/C++, Python, Java, Shell, SQL</li>
@@ -102,7 +143,7 @@
     </ul>
   </section>
 
-  <section>
+  <section id="achievements">
     <h2>Awards & Achievements</h2>
     <ul>
       <li>2nd Place – TAU AUV Autonomy Challenge 2024, Norway</li>
@@ -111,8 +152,13 @@
     </ul>
   </section>
 
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Connect with me on <a href="https://www.linkedin.com/in/nandan-natesan">LinkedIn</a>.</p>
+  </section>
+
   <div class="footer">
-    <p>Connect with me on <a href="https://www.linkedin.com/in/nandan-natesan">LinkedIn</a></p>
+    <p>&copy; 2025 Nandan Natesan</p>
   </div>
 </body>
 </html>
